@@ -1,24 +1,25 @@
 import mongoose from "mongoose";
 import { config } from "../utils/config";
 import chalk from "chalk";
+import logger from "../utils/logger";
 
 export default function dbConnect(){
     mongoose.connect(config.DB_URL)
 }
 
 mongoose.connection.on('error', () => {
-    console.log(chalk.red('[DB]'), 'Error')
+    logger.err('Database Error')
 })
 
 mongoose.connection.on('disconnected', () => {
-    console.log(chalk.yellow('[DB]'),'Database Disconnected. Retrying...')
+    logger.warn('Database Disconnected. Retrying...')
     dbConnect()
 })
 
 mongoose.connection.on('connected', ()=>{
-    console.log(chalk.greenBright('[DB]'),'Database Connected!')
+    logger.stat('Database Connected!')
 })
 
 mongoose.connection.on('connecting', ()=>{
-    console.log(chalk.greenBright('[DB]'),'Database Connecting...')
+    logger.stat('Connecting Database...')
 })
