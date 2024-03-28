@@ -4,7 +4,9 @@ import chalk from "chalk";
 import logger from "../utils/logger";
 
 export default function dbConnect(){
-    mongoose.connect(config.DB_URL)
+    mongoose.connect(config.DB_URL, {
+        dbName: 'WindBack'
+    })
 }
 
 mongoose.connection.on('error', () => {
