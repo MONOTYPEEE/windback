@@ -3,7 +3,8 @@ import mongoose, { Schema } from "mongoose";
 const UserScheme = new Schema({
     _id: {
         guildId: String,
-        userId: String
+        userId: String,
+        year: Number
     },
     user: {
         nickname: String,
