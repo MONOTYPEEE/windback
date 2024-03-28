@@ -12,21 +12,33 @@ const UserScheme = new Schema({
         joinedAt: String
     },
     statistic: {
-        type: Map,
-        of: {
-            type: Map,
-            of: {
-                keyword: { String: Number },
-                activity: {
-                    weekly: [Number],
-                    daily: [Number]
-                },
-                emoji: { String: Number },
-                mention: { String: Number },
-                counts: { String: Number },
+        keyword: {
+            type: Object,
+            default: {}
+        },
+        activity: {
+            weekly: {
+                type: [Number],
+                default: [0, 0, 0, 0, 0, 0, 0]
+            },
+            daily: {
+                type: [Number],
+                default: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             }
-        }
+        },
+        emoji: {
+            type: Object,
+            default: {}
+        },
+        mention: {
+            type: Object,
+            default: {}
+        },
+        counts: {
+            type: Object,
+            default: {}
+        },
     }
 })
 
-export default mongoose.model('User', UserScheme)
+export default mongoose.model('users', UserScheme)
