@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-import { config } from "../utils/config";
-import chalk from "chalk";
+import { config } from "./config";
 import logger from "../utils/logger";
 
 export default function dbConnect(){

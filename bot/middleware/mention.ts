@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-import userController from "../database/controller/userController";
+import userController from "../../database/controller/userController";
 
 export default function Mention(message:Message){
     if(!message.mentions.members || message.mentions.everyone){
