@@ -1,6 +1,5 @@
 {
     "TOKEN": "",
     "APPID": "",
-    "LOCALE": "",
     "DB_URL": "mongodb://"
 }
