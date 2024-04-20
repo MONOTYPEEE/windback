@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
 import { abuseEnglish, abuseKorean } from "../utils/dictionary";
-import userController from "../../database/controller/userController";
+import userController from "../../database/repository/userRepository";
 
 export default function AbueseMatch(message:Message){
     const matchedKorean = message.content.match(abuseKorean),

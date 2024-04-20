@@ -1,6 +1,6 @@
 import { ClientEvents } from "discord.js"
 import { client } from ".."
-import guildController from "../../database/controller/guildController"
+import guildController from "../../database/repository/guildRepository"
 
 export default (event: ClientEvents) => {
     client.on('guildUpdate', async (oldGuild, newGuild) => {
