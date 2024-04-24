@@ -36,8 +36,26 @@ const UserScheme = new Schema({
             default: {}
         },
         counts: {
-            type: Object,
-            default: {}
+            lmao: {
+                type: Number,
+                default: 0
+            },
+            message: {
+                type: Number,
+                default: 0
+            },
+            tprtm: {
+                type: Number,
+                default: 0
+            },
+            URL: {
+                type: Number,
+                default: 0
+            },
+            media: {
+                type: Number,
+                default: 0
+            }
         },
     }
 })
