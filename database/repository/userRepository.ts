@@ -60,4 +60,21 @@ async function updateMention(mentionedUserId:string, userid:string, guildid:stri
     }
 }
 
-export default { updateKeyword, updateActivity, updateEmoji, updateMention }
+async function updateCounts(kind:'lmao'|'tprtm'|'message'|'media'|'URL' ,userid:string, guildid:string, amount:Number){
+    try{
+        await User.findByIdAndUpdate({
+            'guildId': guildid,
+            'userId': userid,
+            'year': currentYear
+        },{
+            $inc: { [`statistic.counts.${kind}`]: amount }
+        },{
+            upsert: true
+        })
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+export default { updateKeyword, updateActivity, updateEmoji, updateMention, updateCounts }
