@@ -4,6 +4,7 @@ import AbueseMatch from "../middleware/abuse";
 import Mention from "../middleware/mention";
 import Activity from "../middleware/activity";
 import Lmao from "../middleware/lmao";
+import Tprtm from "../middleware/tprtm";
 
 export default (event: ClientEvents) => {
     client.on('messageCreate', async message => {
@@ -11,5 +12,6 @@ export default (event: ClientEvents) => {
         Mention(message)
         Activity(message)
         Lmao(message)
+        Tprtm(message)
     })
 }
