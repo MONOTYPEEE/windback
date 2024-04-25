@@ -40,10 +40,6 @@ const UserScheme = new Schema({
                 type: Number,
                 default: 0
             },
-            message: {
-                type: Number,
-                default: 0
-            },
             tprtm: {
                 type: Number,
                 default: 0
