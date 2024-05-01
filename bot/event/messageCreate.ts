@@ -5,6 +5,7 @@ import Mention from "../middleware/mention";
 import Activity from "../middleware/activity";
 import Lmao from "../middleware/lmao";
 import Tprtm from "../middleware/tprtm";
+import Emoji from "../middleware/emoji";
 
 export default (event: ClientEvents) => {
     client.on('messageCreate', async message => {
@@ -13,5 +14,6 @@ export default (event: ClientEvents) => {
         Activity(message)
         Lmao(message)
         Tprtm(message)
+        Emoji(message)
     })
 }
