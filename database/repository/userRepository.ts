@@ -92,4 +92,23 @@ async function updateCounts(kind:'lmao'|'tprtm'|'message'|'media'|'URL' ,userid:
     }
 }
 
-export default { updateKeyword, updateActivity, updateEmoji, updateMention, updateCounts }
+async function updateGame(name:string, userid:string , guildid: string, time:number){
+    try{
+        await User.findByIdAndUpdate({
+            'guildId': guildid,
+            'userId': userid,
+            'year': currentYear
+        },{
+            $inc: {
+                [`statistic.game.${name}`]: time
+            }
+        },{
+            upsert: true
+        })
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+export default { updateKeyword, updateActivity, updateEmoji, updateMention, updateCounts, updateGame }
