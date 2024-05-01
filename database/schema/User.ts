@@ -53,6 +53,10 @@ const UserScheme = new Schema({
                 default: 0
             }
         },
+        game:{
+            type: Object,
+            default: {}
+        }
     }
 })
 
