@@ -7,8 +7,6 @@ export default function handleEmoji(message: Message){
     const RGIEmoji = message.content.match(unicodeEmojiRegex),
         CustomEmoji = message.content.match(customEmojiRegex)
 
-    console.log(message.content, RGIEmoji, CustomEmoji)
-
     RGIEmoji?.forEach(emoji=>{
         userRepository.updateEmoji(emoji, message.author.id, message.guildId ?? '')
     })
