@@ -40,7 +40,22 @@ async function updateActivity(userid:string, guildid:string, amount:number = 1){
 }
 
 async function updateEmoji(emoji:string, userid:string, guildid:string, amount:number = 1){
-    
+    try{
+        await User.findByIdAndUpdate({
+            'guildId': guildid,
+            'userId': userid,
+            'year': currentYear
+        },{
+            $inc: {
+                [`statistic.emoji.${emoji}`]: amount
+            }
+        },{
+            upsert: true
+        })
+    }
+    catch(error){
+        console.log(error)
+    }
 }
 
 async function updateMention(mentionedUserId:string, userid:string, guildid:string, amount:number = 1){
