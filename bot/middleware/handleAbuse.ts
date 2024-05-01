@@ -2,7 +2,7 @@ import { Message } from "discord.js";
 import { abuseEnglish, abuseKorean } from "../utils/dictionary";
 import userRepository from "../../database/repository/userRepository";
 
-export default function AbueseMatch(message:Message){
+export default function handleAbuse(message:Message){
     const matchedKorean = message.content.match(abuseKorean),
         matchedEnglish = message.content.match(abuseEnglish)
     

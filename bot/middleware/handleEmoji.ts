@@ -3,7 +3,7 @@ import { customEmojiRegex, unicodeEmojiRegex } from "../utils/dictionary";
 import userRepository from "../../database/repository/userRepository";
 import getEmojiIdFromString from "../utils/getCustomEmojiIdFromString";
 
-export default function Emoji(message: Message){
+export default function handleEmoji(message: Message){
     const RGIEmoji = message.content.match(unicodeEmojiRegex),
         CustomEmoji = message.content.match(customEmojiRegex)
 

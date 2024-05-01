@@ -1,19 +1,19 @@
 import { ClientEvents } from "discord.js";
 import { client } from "..";
-import AbueseMatch from "../middleware/abuse";
-import Mention from "../middleware/mention";
-import Activity from "../middleware/activity";
-import Lmao from "../middleware/lmao";
-import Tprtm from "../middleware/tprtm";
-import Emoji from "../middleware/emoji";
+import handleAbuese from "../middleware/handleAbuse";
+import handleMention from "../middleware/handleMention";
+import handleActivity from "../middleware/handleActivity";
+import handleLmao from "../middleware/handleLmao";
+import handleTprtm from "../middleware/handleTprtm";
+import handleEmoji from "../middleware/handleEmoji";
 
 export default (event: ClientEvents) => {
     client.on('messageCreate', async message => {
-        AbueseMatch(message)
-        Mention(message)
-        Activity(message)
-        Lmao(message)
-        Tprtm(message)
-        Emoji(message)
+        handleAbuese(message)
+        handleMention(message)
+        handleActivity(message)
+        handleLmao(message)
+        handleTprtm(message)
+        handleEmoji(message)
     })
 }

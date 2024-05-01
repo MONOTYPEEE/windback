@@ -2,7 +2,7 @@ import { Message } from "discord.js";
 import { LmaoRegex } from "../utils/dictionary";
 import userRepository from "../../database/repository/userRepository";
 
-export default function Lmao(message:Message){
+export default function handleLmao(message:Message){
     const matched = message.content.match(LmaoRegex)
 
     if(matched){

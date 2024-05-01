@@ -1,7 +1,7 @@
 import { Message } from "discord.js";
 import userRepository from "../../database/repository/userRepository";
 
-export default function Mention(message:Message){
+export default function handleMention(message:Message){
     if(!message.mentions.members || message.mentions.everyone){
         return
     }
