@@ -9,8 +9,9 @@ export const client = new Client({
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.GuildMessageReactions,
         GatewayIntentBits.GuildEmojisAndStickers,
+        GatewayIntentBits.GuildPresences,
         GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.MessageContent
+        GatewayIntentBits.MessageContent,
     ]
 })
 
