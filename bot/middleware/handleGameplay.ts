@@ -1,5 +1,5 @@
 import { ActivityType, Presence } from "discord.js";
-import userRepository from "../../database/repository/userRepository";
+import playtimeRepository from "../../database/repository/playtimeRepository";
 
 export default function handleGameplay(old:Presence|null, now:Presence){
     if(!old) return
@@ -8,7 +8,7 @@ export default function handleGameplay(old:Presence|null, now:Presence){
     try{
         old.activities.forEach(activity=>{
             if(activity.type === ActivityType.Playing){
-                userRepository.updateGame(activity.name, now.userId, now.guild?.id ?? '', Date.now()-activity.createdTimestamp)
+                playtimeRepository.updatePlaytime(activity.name, now.userId, now.guild?.id ?? '', Date.now()-activity.createdTimestamp)
             }
         })
     }

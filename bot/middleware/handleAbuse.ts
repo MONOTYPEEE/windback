@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
 import { abuseEnglish, abuseKorean } from "../utils/dictionary";
-import userRepository from "../../database/repository/userRepository";
+import keywordRepository from "../../database/repository/keywordRepository";
 
 export default function handleAbuse(message:Message){
     const matchedKorean = message.content.match(abuseKorean),
@@ -8,12 +8,12 @@ export default function handleAbuse(message:Message){
     
     if(matchedKorean){
         matchedKorean.forEach(word=>{
-            userRepository.updateKeyword(word, message.author.id, message.guildId ?? '')
+            keywordRepository.updateKeyword(word, message.author.id, message.guildId ?? '')
         })
     }
     if(matchedEnglish){
         matchedEnglish.forEach(word=>{
-            userRepository.updateKeyword(word, message.author.id, message.guildId ?? '')
+            keywordRepository.updateKeyword(word, message.author.id, message.guildId ?? '')
         })
     }
 }

@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
-import userRepository from "../../database/repository/userRepository";
+import messageRepository from "../../database/repository/messageRepository";
 
 export default function handleActivity(message:Message){
-    userRepository.updateActivity(message.author.id, message.guildId ?? '')
+    messageRepository.updateActivity(message.author.id, message.guildId ?? '')
 }

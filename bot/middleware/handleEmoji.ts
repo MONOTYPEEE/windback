@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
 import { customEmojiRegex, unicodeEmojiRegex } from "../utils/dictionary";
-import userRepository from "../../database/repository/userRepository";
+import emojiRepository from "../../database/repository/emojiRepository";
 import getEmojiIdFromString from "../utils/getCustomEmojiIdFromString";
 
 export default function handleEmoji(message: Message){
@@ -8,9 +8,9 @@ export default function handleEmoji(message: Message){
         CustomEmoji = message.content.match(customEmojiRegex)
 
     RGIEmoji?.forEach(emoji=>{
-        userRepository.updateEmoji(emoji, message.author.id, message.guildId ?? '')
+        emojiRepository.updateEmoji(emoji, message.author.id, message.guildId ?? '')
     })
     CustomEmoji?.forEach(emoji=>{
-        userRepository.updateEmoji(getEmojiIdFromString(emoji), message.author.id, message.guildId ?? '')
+        emojiRepository.updateEmoji(getEmojiIdFromString(emoji), message.author.id, message.guildId ?? '')
     })
 }

@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-import userRepository from "../../database/repository/userRepository";
+import mentionRepository from "../../database/repository/mentionRepository";
 
 export default function handleMention(message:Message){
     if(!message.mentions.members || message.mentions.everyone){
@@ -7,6 +7,6 @@ export default function handleMention(message:Message){
     }
 
     message.mentions.members.forEach(member=>{
-        userRepository.updateMention(message.author.id, member.id, message.guildId ?? '')
+        mentionRepository.updateMention(message.author.id, member.id, message.guildId ?? '')
     })
 }
