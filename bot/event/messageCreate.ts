@@ -1,6 +1,6 @@
 import { ClientEvents } from "discord.js";
 import { client } from "..";
-import handleAbuese from "../middleware/handleAbuse";
+import handleCurse from "../middleware/handleCurse";
 import handleMention from "../middleware/handleMention";
 import handleActivity from "../middleware/handleActivity";
 import handleLmao from "../middleware/handleLmao";
@@ -9,7 +9,7 @@ import handleEmoji from "../middleware/handleEmoji";
 
 export default (event: ClientEvents) => {
     client.on('messageCreate', async message => {
-        handleAbuese(message)
+        handleCurse(message)
         handleMention(message)
         handleActivity(message)
         handleLmao(message)
