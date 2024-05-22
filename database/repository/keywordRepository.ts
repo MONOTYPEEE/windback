@@ -9,7 +9,7 @@ async function updateKeyword(keyword:string, userid:string, guildid:string, amou
             'userId': userid,
             'year': currentYear
         }, {
-            $inc: { [`statistic.${keyword}`]: amount }
+            $inc: { [`keyword.${keyword}`]: amount }
         },{
             upsert: true
         })
