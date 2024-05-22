@@ -3,4 +3,5 @@ export const abuseKorean = /[시씨슈쓔쉬쉽쒸쓉ㅅㅆ]([0-9]*|[0-9]+ *|@|~
     LmaoRegex = /(ㅋ|ㄲ|ㅌ|ㅎ|엌|앜|옼|잌|싴|헠|힠|앜|낰|닠|놐|넼|밬|낔|짴){2,}/g,
     tprtmRegex = /[섹셱쎅쎽쎾][ 0-9@-]?[스쓰]|sex|tprtm/gi,
     customEmojiRegex = /<(a)?:\w+:(\d{17,19})>/g,
-    unicodeEmojiRegex = /\p{RGI_Emoji}/vg
+    unicodeEmojiRegex = /\p{RGI_Emoji}/vg,
+    URLregex = /https?:[^\s]*/g
