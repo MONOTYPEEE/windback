@@ -6,6 +6,7 @@ import handleActivity from "../middleware/handleActivity";
 import handleLmao from "../middleware/handleLmao";
 import handleTprtm from "../middleware/handleTprtm";
 import handleEmoji from "../middleware/handleEmoji";
+import handleKeyword from "../middleware/handleKeyword";
 
 export default (event: ClientEvents) => {
     client.on('messageCreate', async message => {
@@ -15,5 +16,6 @@ export default (event: ClientEvents) => {
         handleLmao(message)
         handleTprtm(message)
         handleEmoji(message)
+        handleKeyword(message)
     })
 }
