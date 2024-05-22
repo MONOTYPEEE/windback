@@ -10,8 +10,6 @@ export default function handleKeywordUpdate(old:Message|PartialMessage, now:Mess
         const tokenizedOld = Tokenization(Preprocess(old.content ?? '')),
             tokenizedNow = Tokenization(Preprocess(now.content ?? ''))
 
-        console.log(tokenizedOld, tokenizedNow)
-
         if(tokenizedOld){
             tokenizedOld.forEach((token)=>{
                 keywordRepository.updateKeyword(token, userId, guildId, -1)
