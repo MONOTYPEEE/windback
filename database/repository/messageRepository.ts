@@ -15,6 +15,8 @@ async function updateActivity(userid:string, guildid:string, amount:number = 1){
                 [`activity.daily.${currentHour}`]: amount,
                 [`activity.weekly.${currentDayofWeek}`]: amount
             }
+        },{
+            upsert: true
         })
     }
     catch(error){
