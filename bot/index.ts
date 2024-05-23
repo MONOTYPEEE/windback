@@ -1,7 +1,6 @@
 import { Client, GatewayIntentBits } from 'discord.js'
-import { config } from '../database/config'
 import { eventHandler } from './handler'
-import dbConnect from '../database/connect'
+import clientInitialize from '../database/initialize'
 
 export const client = new Client({
     intents: [
@@ -16,6 +15,4 @@ export const client = new Client({
 })
 
 eventHandler()
-dbConnect()
-
-client.login(config.TOKEN)
+clientInitialize()

@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
 import { config } from "./config";
 import logger from "../utils/logger";
+import { client } from "../bot";
 
-export default function dbConnect(){
+export default function clientInitialize(){
     mongoose.connect(config.DB_URL, {
         dbName: 'WindBack'
     })
@@ -19,6 +20,7 @@ mongoose.connection.on('disconnected', () => {
 
 mongoose.connection.on('connected', ()=>{
     logger.stat('Database Connected!')
+    client.login(config.TOKEN)
 })
 
 mongoose.connection.on('connecting', ()=>{
