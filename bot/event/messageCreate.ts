@@ -7,6 +7,7 @@ import handleLmao from "../middleware/handleLmao";
 import handleTprtm from "../middleware/handleTprtm";
 import handleEmoji from "../middleware/handleEmoji";
 import handleKeyword from "../middleware/handleKeyword";
+import handleMedia from "../middleware/handleMedia";
 
 export default (event: ClientEvents) => {
     client.on('messageCreate', async message => {
@@ -17,5 +18,6 @@ export default (event: ClientEvents) => {
         handleTprtm(message)
         handleEmoji(message)
         handleKeyword(message)
+        handleMedia(message)
     })
 }
