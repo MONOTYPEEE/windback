@@ -15,7 +15,7 @@ mongoose.connection.on('error', () => {
 
 mongoose.connection.on('disconnected', () => {
     logger.warn('Database Disconnected. Retrying...')
-    dbConnect()
+    clientInitialize()
 })
 
 mongoose.connection.on('connected', ()=>{
