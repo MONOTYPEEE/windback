@@ -17,6 +17,9 @@ dependencies:
   mongoose:
     specifier: ^8.2.1
     version: 8.3.4
+  redaxios:
+    specifier: ^0.5.1
+    version: 0.5.1
   typescript:
     specifier: ^5.0.0
     version: 5.4.5
@@ -730,6 +733,10 @@ packages:
       http-errors: 2.0.0
       iconv-lite: 0.4.24
       unpipe: 1.0.0
+    dev: false
+
+  /redaxios@0.5.1:
+    resolution: {integrity: sha512-FSD2AmfdbkYwl7KDExYQlVvIrFz6Yd83pGfaGjBzM9F6rpq8g652Q4Yq5QD4c+nf4g2AgeElv1y+8ajUPiOYMg==}
     dev: false
 
   /safe-buffer@5.2.1:
