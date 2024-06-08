@@ -1,5 +1,7 @@
 {
     "TOKEN": "",
     "APPID": "",
-    "DB_URL": "mongodb://"
+    "DB_URL": "mongodb://",
+    "APP_BASEURL": "https://discord.com/api/v10",
+    "SECRET": ""
 }
