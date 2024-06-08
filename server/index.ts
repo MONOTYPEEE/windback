@@ -13,6 +13,9 @@ app.listen(app.get('port'), () => {
   console.log(chalk.green(`🌐 WindBack API is ready at port 3000`));
 })
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
 app.use('/auth', authRouter)
 app.use('/user', userRouter)
 app.use('/stat', statisticRouter)
