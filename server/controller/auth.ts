@@ -85,7 +85,7 @@ export async function revokeToken(request:Request, response:Response){
         .post(
             `${config.APP_BASEURL}/oauth2/token/revoke`,
             new URLSearchParams({
-                'token': request.headers.authorization
+                'token': request.headers.authorization.split(' ')[1]
             }),
             {
                 headers: {
