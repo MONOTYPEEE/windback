@@ -25,7 +25,7 @@ export async function getToken(request:Request, response:Response){
         )
         .then((d)=>{
             if(d.status === 200){
-                const expiresAt = new Date(Date.now() + d.data.expires_in)
+                const expiresAt = new Date(Date.now() + d.data.expires_in * 1000)
 
                 return response.status(200).send({
                     access: d.data.access_token,
@@ -62,7 +62,7 @@ export async function refreshAccessToken(request:Request, response:Response){
         )
         .then((d)=>{
             if(d.status === 200){
-                const expiresAt = new Date(Date.now() + d.data.expires_in)
+                const expiresAt = new Date(Date.now() + d.data.expires_in * 1000)
 
                 return response.status(200).send({
                     access: d.data.access_token,
