@@ -40,8 +40,8 @@ export async function getToken(request:Request, response:Response){
 }
 
 export async function refreshAccessToken(request:Request, response:Response){
-    if(!request.body){
-        return response.status(400).send('token is required')
+    if(!request.body.token){
+        return response.status(401).send('token is required')
     }
 
     axios
@@ -55,9 +55,9 @@ export async function refreshAccessToken(request:Request, response:Response){
             }),
             {
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                auth: `Barer `
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': `Barer ${request.body.token}`
+                }
             }
         )
         .then((d)=>{
