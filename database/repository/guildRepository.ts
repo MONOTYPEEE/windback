@@ -24,4 +24,17 @@ async function findGuild(guildid:string){
     }
 }
 
-export default { updateGuild, findGuild }
+async function findGuilds(guildIds:string[]){
+    try{
+        return await Guild.find({
+            '_id': {
+                $in: guildIds
+            }
+        })
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+export default { updateGuild, findGuild, findGuilds }
