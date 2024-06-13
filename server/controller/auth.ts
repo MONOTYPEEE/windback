@@ -56,7 +56,7 @@ export async function refreshAccessToken(request:Request, response:Response){
             {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': `Barer ${request.body.token}`
+                    'Authorization': `Bearer ${request.body.token}`
                 }
             }
         )
