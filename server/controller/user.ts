@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import axios from 'redaxios'
 import { config } from "../../database/config";
+import tokenSplit from "../../utils/tokenSplit";
 
 export function getOwnProfile(request:Request, response:Response){
     if(!request.headers.authorization){
@@ -12,7 +13,7 @@ export function getOwnProfile(request:Request, response:Response){
             `${config.APP_BASEURL}/users/@me`,
             {
                 headers:{
-                    'Authorization': `Bearer ${request.headers.authorization.split(' ')[1]}`
+                    'Authorization': `Bearer ${tokenSplit(request.headers.authorization).token}`
                 }
             }
         )

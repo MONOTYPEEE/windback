@@ -1,6 +1,7 @@
 import { config } from '../../database/config'
 import { Request, Response } from 'express'
 import axios from 'redaxios'
+import tokenSplit from '../../utils/tokenSplit'
 
 export async function getToken(request:Request, response:Response){
     if(!request.body){
@@ -85,7 +86,7 @@ export async function revokeToken(request:Request, response:Response){
         .post(
             `${config.APP_BASEURL}/oauth2/token/revoke`,
             new URLSearchParams({
-                'token': request.headers.authorization.split(' ')[1]
+                'token': tokenSplit(request.headers.authorization).token
             }),
             {
                 headers: {
