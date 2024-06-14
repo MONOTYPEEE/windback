@@ -36,7 +36,7 @@ export async function getToken(request:Request, response:Response){
             }
         })
         .catch((error)=>{
-            return response.status(400).send('error while get token')
+            return response.status(400).send(error.data)
         })
 }
 
@@ -73,7 +73,7 @@ export async function refreshAccessToken(request:Request, response:Response){
             }
         })
         .catch((error)=>{
-            return response.status(400).send('error while refresh token')
+            return response.status(400).send(error.data)
         })
 }
 
@@ -101,6 +101,6 @@ export async function revokeToken(request:Request, response:Response){
             }
         })
         .catch((error)=>{
-            return response.status(400).send('error while revoke token')
+            return response.status(400).send(error.data)
         })
 }
