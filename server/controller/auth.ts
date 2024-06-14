@@ -4,7 +4,7 @@ import axios from 'redaxios'
 import tokenSplit from '../../utils/tokenSplit'
 
 export async function getToken(request:Request, response:Response){
-    if(!request.body){
+    if(!request.body?.code){
         return response.status(400).send('code is required')
     }
 
