@@ -8,6 +8,8 @@ export function getOwnProfile(request:Request, response:Response){
         return response.status(401).send('token is required')
     }
 
+    console.log(request)
+
     axios
         .get(
             `${config.APP_BASEURL}/users/@me`,
@@ -19,7 +21,12 @@ export function getOwnProfile(request:Request, response:Response){
         )
         .then(d=>{
             if(d.status===200){
-                return response.status(200).send(d.data)
+                return response.status(200).send({
+                    id: d.data.id,
+                    username: d.data.username,
+                    name: d.data.global_name,
+                    avatar: `https://cdn.discordapp.com/avatars/${d.data.id}/${d.data.avatar}`
+                })
             }
         })
         .catch(error=>{
