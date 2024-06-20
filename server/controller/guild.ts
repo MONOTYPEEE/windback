@@ -29,6 +29,38 @@ export function getAvaliableGuild(request:Request, response:Response){
             }
         })
         .catch(error=>{
-            return response.status(400).send(error)
+            return response.status(400).send(error.body)
+        })
+}
+
+export function getGuildInfo(request:Request, response:Response){
+    if(!request.headers.authorization){
+        return response.status(401).send('Unauthorized')
+    }
+
+    axios
+        .get(
+            `${config.APP_BASEURL}/users/@me/guilds`,
+            {
+                headers: {
+                    'Authorization': `Bearer ${tokenSplit(request.headers.authorization).token}`
+                }
+            }
+        )
+        .then(d=>{
+            console.log(request.query)
+            if(d.status===200){
+                const filtered = d.data.find((guild:Guild)=> guild.id === request.params.id)
+
+                if(!filtered){
+                    return response.status(404).send('cannot find server')
+                }
+                else{
+                    return response.status(200).send(filtered)
+                }
+            }
+        })
+        .catch(error=>{
+            return response.status(400).send(error.data)
         })
 }
