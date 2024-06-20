@@ -48,7 +48,6 @@ export function getGuildInfo(request:Request, response:Response){
             }
         )
         .then(d=>{
-            console.log(request.query)
             if(d.status===200){
                 const filtered = d.data.find((guild:Guild)=> guild.id === request.params.id)
 
@@ -56,7 +55,12 @@ export function getGuildInfo(request:Request, response:Response){
                     return response.status(404).send('cannot find server')
                 }
                 else{
-                    return response.status(200).send(filtered)
+                    response.set('Cache-control', 'private, max-age=3600')
+                    return response.status(200).send({
+                        id: filtered.id,
+                        icon: `https://cdn.discordapp.com/icons/${filtered.id}/${filtered.icon}.png`,
+                        name: filtered.name
+                    })
                 }
             }
         })
