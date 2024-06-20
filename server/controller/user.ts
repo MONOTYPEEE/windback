@@ -8,8 +8,6 @@ export function getOwnProfile(request:Request, response:Response){
         return response.status(401).send('token is required')
     }
 
-    console.log(request)
-
     axios
         .get(
             `${config.APP_BASEURL}/users/@me`,
@@ -21,6 +19,7 @@ export function getOwnProfile(request:Request, response:Response){
         )
         .then(d=>{
             if(d.status===200){
+                response.set('Cache-control', 'private, max-age=3600')
                 return response.status(200).send({
                     id: d.data.id,
                     username: d.data.username,
