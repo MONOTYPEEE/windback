@@ -19,7 +19,7 @@
     "redaxios": "^0.5.1"
   },
   "scripts": {
-    "run": "bun bot/index.ts",
+    "run": "bun bot/index.ts & bun server/index.ts",
     "botonly": "bun bot/index.ts",
     "apionly": "bun server/index.ts"
   }
