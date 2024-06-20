@@ -26,11 +26,14 @@ async function findGuild(guildid:string){
 
 async function findGuilds(guildIds:string[]){
     try{
-        return await Guild.find({
-            '_id': {
-                $in: guildIds
-            }
-        })
+        return await Guild
+            .find({
+                '_id': {
+                    $in: guildIds
+                }
+            })
+            .lean()
+            .exec()
     }
     catch(error){
         console.log(error)
