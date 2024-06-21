@@ -5,7 +5,7 @@ import { config } from "../../database/config";
 import tokenSplit from "../../utils/tokenSplit";
 import { Guild } from "discord.js";
 
-export function getAvaliableGuild(request:Request, response:Response){
+export async function getAvaliableGuild(request:Request, response:Response){
     if(!request.headers.authorization){
         return response.status(401).send('Unauthorized')
     }
@@ -20,11 +20,14 @@ export function getAvaliableGuild(request:Request, response:Response){
             }
         )
         .then(d=>{
-            if(d.status === 200){
+            if(d.status === 200 && d.data && d.data.length){
                 guildRepository
                     .findGuilds(d.data.map((guild:Guild)=> guild.id))
                     .then(found=>{
                         return response.status(200).send(found)
+                    })
+                    .catch(error=>{
+                        return response.status(error.status)
                     })
             }
         })
@@ -33,7 +36,7 @@ export function getAvaliableGuild(request:Request, response:Response){
         })
 }
 
-export function getGuildInfo(request:Request, response:Response){
+export async function getGuildInfo(request:Request, response:Response){
     if(!request.headers.authorization){
         return response.status(401).send('Unauthorized')
     }
