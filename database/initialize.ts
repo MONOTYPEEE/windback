@@ -20,7 +20,6 @@ mongoose.connection.on('disconnected', () => {
 
 mongoose.connection.on('connected', ()=>{
     logger.stat('Database Connected!')
-    client.login(config.TOKEN)
 })
 
 mongoose.connection.on('connecting', ()=>{
