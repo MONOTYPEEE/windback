@@ -2,11 +2,9 @@ import mongoose from "mongoose";
 import { config } from "./config";
 import logger from "../utils/logger";
 
-export default function databaseInit(){
-    mongoose.connect(config.DB_URL, {
-        dbName: 'WindBack'
-    })
-}
+mongoose.connect(config.DB_URL, {
+    dbName: 'WindBack'
+})
 
 mongoose.connection.on('error', () => {
     logger.err('Database Error')
@@ -14,7 +12,7 @@ mongoose.connection.on('error', () => {
 
 mongoose.connection.on('disconnected', () => {
     logger.warn('Database Disconnected. Retrying...')
-    databaseInit()
+    // databaseInit()
 })
 
 mongoose.connection.on('connected', ()=>{
