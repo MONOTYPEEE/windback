@@ -104,7 +104,8 @@ export async function getEmoji(request:Request, response:Response){
                                     return [
                                         k,
                                         v,
-                                        currentEmojiData?.name
+                                        currentEmojiData?.name,
+                                        `https://cdn.discordapp.com/emojis/${k}`
                                     ]
                                 })
 
